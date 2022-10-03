@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 
 @SpringBootApplication
 @ServletComponentScan
@@ -37,5 +38,10 @@ public class TestMicrometerApplication {
 			return "unknown-host";
 		}
 	}
+
+	@Bean
+    public MeterRegistry getMeterRegistry() {
+        return new SimpleMeterRegistry();
+    }
 
 }
